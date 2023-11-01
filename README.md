@@ -1,10 +1,10 @@
 # compressor-de-imagens
 
-##Requisitos:
+## Requisitos:
 
 -Node 19
 
-##Como rodar?
+## Como rodar?
 
 - Instale as dependências rodando um npm i || yarn
 - Coloque as imagens dentro da pasta input
