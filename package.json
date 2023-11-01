@@ -1,0 +1,20 @@
+{
+  "name": "image-compressor",
+  "version": "1.0.0",
+  "description": "a compressor of images and conversor to webp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "imagemin": "^8.0.1",
+    "imagemin-webp": "^8.0.0",
+    "path": "^0.12.7",
+    "sharp": "^0.32.5"
+  },
+  "type": "module"
+}
