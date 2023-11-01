@@ -6,7 +6,7 @@ import imageminWebp from 'imagemin-webp';
 
 const inputDir = './input';
 const outputDir = './output';
-const maxWidth = 885;
+const maxWidth = 1080;
 
 // Função para processar uma imagem
 async function processImage(inputPath, outputPath) {
@@ -16,18 +16,18 @@ async function processImage(inputPath, outputPath) {
 
         let resizedImage = image;
         if (true) {
-            resizedImage = image.resize({ width: maxWidth, height: 968, withoutEnlargement: true });
+            resizedImage = image.resize({ width: maxWidth, withoutEnlargement: true });
         }
 
         const buffer = await resizedImage.toBuffer();
 
         // Comprime a imagem
-        // const compressedBuffer = await imagemin.buffer(buffer, {
-        //     plugins: [imageminWebp({ quality: 75 })],
-        // });
+        const compressedBuffer = await imagemin.buffer(buffer, {
+            plugins: [imageminWebp({ quality: 75 })],
+        });
 
         // Salva a imagem processada no diretório de saída
-        fs.writeFileSync(outputPath, buffer);
+        fs.writeFileSync(outputPath, compressedBuffer);
 
         console.log(`Imagem processada: ${outputPath}`);
     } catch (error) {
@@ -44,7 +44,7 @@ async function processImages() {
             const extname = path.extname(file).toLowerCase();
             if (extname === '.jpg' || extname === '.jpeg' || extname === '.png') {
                 const inputPath = path.join(inputDir, file);
-                const outputPath = path.join(outputDir, path.basename(file, extname) + '.jpg');
+                const outputPath = path.join(outputDir, path.basename(file, extname) + '.webp');
                 await processImage(inputPath, outputPath);
             }
         }
